@@ -1,4 +1,4 @@
-package stepDefinations;
+package stepDefinitions;
 import org.junit.runner.RunWith;
 
 import io.cucumber.java.en.And;
@@ -18,7 +18,6 @@ public class IndexStepDefinition {
 		this.testContextSetup=testContextSetup;
 	}
 	
-	
     @Given("^User is on landing page$")
     public void user_is_on_landing_page() throws Throwable {
     //throw new PendingException();
@@ -28,7 +27,7 @@ public class IndexStepDefinition {
     @And("^User goes to register page$")
     public void user_goes_to_register_page() {
     	LandingPage landingPage = testContextSetup.objectManager.getLandingPage();
-    	landingPage.getRegister().click();
+    	landingPage.clickRegister();
     }
 
 }

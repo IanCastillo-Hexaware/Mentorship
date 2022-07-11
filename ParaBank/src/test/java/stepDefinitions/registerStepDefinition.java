@@ -1,6 +1,8 @@
-package stepDefinations;
+package stepDefinitions;
 
-import org.junit.Assert;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import io.cucumber.java.en.And;
 import objectPages.HomePage;
 import objectPages.RegisterPage;
@@ -22,6 +24,7 @@ public class registerStepDefinition{
 	@And("^User enters this info \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\"$")
     public void user_enters_this_info_something_something_something_something_something_something_something_something(String name, String lastname, String street, String city, String state, String zip, String phone, String ssn1, String username, String password) throws Throwable {
 		HomePage homePage = testContextSetup.objectManager.getHomePage();
+		WebDriverWait wait = testContextSetup.wait;
 		RegisterPage registerPage = testContextSetup.objectManager.getRegisterPage();
 		registerPage.setName(name);
 		registerPage.setLastName(lastname);
@@ -35,16 +38,18 @@ public class registerStepDefinition{
 		registerPage.setPassword(password);
 		registerPage.clickRegister();
 		
-		if (!homePage.getTitle().contains(username)) {
-			while(!homePage.getTitle().contains(username)&&i<10) {
+		if (!homePage.getTitle().getText().contains(username)) {
+			while(!homePage.getTitle().getText().contains(username)&&i<10) {
 			i++;
 			registerPage.setUsername(username+i);
 			registerPage.setPassword(password);
 			registerPage.clickRegister();
-			Thread.sleep(500);
+			wait.until(ExpectedConditions.visibilityOf(homePage.getTitle()));
+			}
+			if(i>=10) {
+				System.out.println("Please try another username");
 			}
 		}
-		Assert.assertTrue(!homePage.getTitle().contains("Error"));
         //throw new PendingException();
     }
 	

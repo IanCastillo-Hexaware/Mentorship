@@ -1,5 +1,4 @@
-package stepDefinations;
-import org.junit.Assert;
+package stepDefinitions;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
@@ -21,8 +20,7 @@ public class openAccountStepDefinition {
     public void user_opens_new_account() throws Throwable {
     	HomePage homePage = testContextSetup.objectManager.getHomePage(); 
     	homePage.clickOpenNewAccount();
-		Thread.sleep(500);
-		Assert.assertTrue(homePage.getError(), !homePage.getTitle().contains("Error"));
+		Thread.sleep(1000);
 		homePage.clickConfirmAccount();
 		
         //throw new PendingException();

@@ -2,7 +2,6 @@ package objectPages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class LandingPage {
 	
@@ -15,8 +14,8 @@ public class LandingPage {
 		this.driver=driver;
 	}
 	
-	public WebElement getRegister() {
-		return driver.findElement(register);
+	public void clickRegister() {
+		driver.findElement(register).click();
 	}
 
 }

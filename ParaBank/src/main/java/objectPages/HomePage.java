@@ -17,7 +17,7 @@ public class HomePage {
 	private By downpayment = By.id("downPayment");
 	private By apply = By.cssSelector("input[value='Apply Now'");
 	private By response = By.cssSelector("div[ng-if*='Response']");
-	private By error = By.cssSelector("p.error");
+	private By error = By.cssSelector("div:nth-child(3) div:nth-child(2) div.ng-scope:nth-child(1) div.ng-scope > p.error");
 	private By title = By.cssSelector(".title");
 	
 	
@@ -56,8 +56,8 @@ public class HomePage {
 	public String getError() {
 		return driver.findElement(error).getText();
 	}
-	public String getTitle() {
-		return driver.findElement(title).getText();
+	public WebElement getTitle() {
+		return driver.findElement(title);
 	}
 	
 }
