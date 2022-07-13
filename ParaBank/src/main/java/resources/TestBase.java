@@ -41,7 +41,7 @@ public class TestBase {
 						System.getProperty("user.dir") + "\\src\\main\\java\\resources\\msedgedriver.exe");
 				driver = new EdgeDriver();
 			}
-			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 			driver.get(url);
 		}
 		return driver;
